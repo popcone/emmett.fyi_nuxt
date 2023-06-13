@@ -1,0 +1,17 @@
+@use 'vuetify/settings' with (
+    
+    // TYPOGRAPHY 
+    $body-font-family: ('Open Sans', sans-serif),
+    $heading-font-family: ('Wix Madefor Text', sans-serif),
+    $typography: 
+        (
+          'h1': (
+            'size': 5rem,
+            'weight': 300,
+            'line-height': 5rem,
+            'letter-spacing': -.015625em,
+            'text-transform': none
+          ),
+        ),
+
+);
