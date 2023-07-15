@@ -1,4 +1,4 @@
-@use 'vuetify/settings' with (
+@forward 'vuetify/settings' with (
     
     // TYPOGRAPHY 
     $body-font-family: ('Open Sans', sans-serif),
