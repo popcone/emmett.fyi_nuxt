@@ -1,0 +1,7 @@
+@use './settings';
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+
+.logo {
+  font-family: 'Shrikhand', cursive;
+  font-size: map-get(settings.$typography, h3, size);
+}
