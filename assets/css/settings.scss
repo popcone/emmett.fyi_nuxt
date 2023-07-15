@@ -2,7 +2,7 @@
     
     // TYPOGRAPHY 
     $body-font-family: ('Open Sans', sans-serif),
-    $heading-font-family: ('Wix Madefor Text', sans-serif),
+    $heading-font-family: ('Open Sans', sans-serif),
     $typography: 
         (
           'h1': (
@@ -13,5 +13,15 @@
             'text-transform': none
           ),
         ),
+
+    // DISPLAY
+    $grid-breakpoints: (
+        'xs': 0,
+        'sm': 415px,
+        'md': 600px,
+        'lg': 960px,
+        'xl': 1264px,
+        'xxl': 1800px,
+      ),
 
 );

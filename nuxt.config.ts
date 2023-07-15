@@ -5,9 +5,7 @@ export default defineNuxtConfig({
         head: {
             title: "emmett.fyi",
             link: [
-                { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-                { rel: 'preconnect', href: 'https://fonts.gstatic.com', },
-                { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Open+Sans&family=Wix+Madefor+Text:wght@400;700&display=swap', },
+                { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Shrikhand&display=swap', },
             ],
         }
     },
@@ -58,13 +56,14 @@ export default defineNuxtConfig({
                 }
             },
             display: {
-                mobileBreakpoint: 'sm',
+                mobileBreakpoint: 'xs',
                 thresholds: {
                     xs: 0,
                     sm: 415,
                     md: 600,
                     lg: 960,
                     xl: 1264,
+                    xxl: 1800,
                 },
             },
             defaults: {
