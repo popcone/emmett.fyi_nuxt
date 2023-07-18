@@ -1,0 +1,18 @@
+@use './settings';
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap&family=Red+Hat+Text:ital,wght@0,400;1,400&display=swap');
+
+#index {
+  .title {
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: map-get(settings.$typography, h1, size) * 1.899;
+    font-weight: 400;
+    max-width: 15ch;
+  }
+}
+
+#appbar {
+  .logo {
+    font-family: 'Shrikhand', cursive !important;
+    font-size: map-get(settings.$typography, h5, size);
+  }
+}
