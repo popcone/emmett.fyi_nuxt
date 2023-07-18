@@ -18,7 +18,7 @@ const { xxl } = useDisplay();
       <v-app-bar id="appbar" class="px-4" density="comfortable">
         <v-row>
           <v-col cols="6" lg="4" xxl="2">
-            <h1 class="logo text-primary">emmett.fyi</h1>
+            <h1 class="logo">emmett.fyi</h1>
           </v-col>
           <v-col cols="6" lg="8" class="d-flex justify-end">
             <div>

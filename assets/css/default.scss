@@ -14,5 +14,6 @@
   .logo {
     font-family: 'Shrikhand', cursive !important;
     font-size: map-get(settings.$typography, h5, size);
+    color: rgb(var(--v-theme-primary))
   }
 }
