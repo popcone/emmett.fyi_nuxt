@@ -25,7 +25,7 @@
       ),
       'h4': (
         'size': 1.563rem,
-        'weight': 600,
+        'weight': 400,
         'line-height': 1.47em,
         'letter-spacing': normal,
       ),
@@ -93,4 +93,9 @@
   // BUTTON
   $button-plain-opacity: 1,
 
+  // SWITCH
+  $switch-thumb-height: 14px,
+  $switch-thumb-width: 14px,
+  $switch-track-width: 24px,
+  $switch-thumb-offset: 0px,
 );
