@@ -41,7 +41,7 @@ export default defineNuxtConfig({
                     },
                     light: {
                         colors: {
-                            background: '#fafbfb',
+                            background: '#f9fbfb',
                             surface: '#0d0d0d',
                             primary: '#337cb2',
                             secondary: '#34bcda',
