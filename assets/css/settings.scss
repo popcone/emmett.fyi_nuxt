@@ -1,4 +1,6 @@
 @forward 'vuetify/settings' with (
+
+  // COLORS
     
   // TYPOGRAPHY 
   $body-font-family: ('Open Sans', sans-serif),
@@ -91,11 +93,14 @@
     ),
 
   // BUTTON
-  $button-plain-opacity: 1,
+  $button-plain-opacity: .77,
 
   // SWITCH
   $switch-thumb-height: 14px,
   $switch-thumb-width: 14px,
   $switch-track-width: 24px,
   $switch-thumb-offset: 0px,
+  $switch-thumb-elevation: 0,
+  $switch-control-input-transition: .30s,
+
 );

@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
     app: {
@@ -31,8 +30,8 @@ export default defineNuxtConfig({
                         colors: {
                             background: '#0d0d0d',
                             surface: '#fafbfb',
-                            primary: '#34bcda',
-                            secondary: '#337cb2',
+                            primary: '#337cb2',
+                            secondary: '#34bcda',
                             tertiary: '#f7f8fa',
                             error: '#B00020',
                             info: '#2196F3',
@@ -71,7 +70,7 @@ export default defineNuxtConfig({
                     ripple: false,
                   },
                 VDivider: {
-                    color: 'grey-lighten-5',
+                    color: 'primary',
                 },
                 VCard: {
                     rounded: 0,
@@ -93,4 +92,5 @@ export default defineNuxtConfig({
             },
         },
     },
+    
 })
