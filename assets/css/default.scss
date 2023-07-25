@@ -5,6 +5,46 @@
   height: 100vh;
 }
 
+
+#index {
+
+  h1.title {
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: map-get(settings.$typography, h1, size) * 1.899;
+    font-weight: 400;
+    line-height: .955;
+    color: rgb(var(--v-theme-primary));
+    opacity: .33;
+  }
+
+  h1.title:nth-of-type(odd){
+    opacity: .11;
+  }
+  
+  h1.title span.word {
+    margin-right: 1rem;
+  }
+  
+  h1.title span.word::after {
+  content: '.';
+  font-size: var(--title);
+  font-size: map-get(settings.$typography, h4, size);
+  }
+
+  #header {
+    
+    .title-container {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: center;
+      height: 20vh;
+    }
+
+  }
+
+}
+
 #appbar {
 
   h1.logo {
