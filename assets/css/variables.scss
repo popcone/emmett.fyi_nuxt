@@ -1,0 +1,28 @@
+@use './settings';
+
+// Grid breakpoints
+$break-xs: map-get(settings.$grid-breakpoints, xs);
+$break-sm: map-get(settings.$grid-breakpoints, sm);
+$break-md: map-get(settings.$grid-breakpoints, md);
+$break-lg: map-get(settings.$grid-breakpoints, lg);
+$break-xl: map-get(settings.$grid-breakpoints, xl);
+$break-xxl: map-get(settings.$grid-breakpoints, xxl);
+
+// Typography
+$font-size-h1: map-get(settings.$typography, h1, size);
+$font-size-h2: map-get(settings.$typography, h2, size);
+$font-size-h3: map-get(settings.$typography, h3, size);
+$font-size-h4: map-get(settings.$typography, h4, size);
+$font-size-h5: map-get(settings.$typography, h5, size);
+$font-size-h6: map-get(settings.$typography, h6, size);
+
+// Colors
+$color-background: rgb(var(--v-theme-background));
+$color-surface: rgb(var(--v-theme-surface));
+$color-primary: rgb(var(--v-theme-primary));
+$color-secondary: rgb(var(--v-theme-secondary));
+$color-tertiary: rgb(var(--v-theme-tertiary));
+$color-error: rgb(var(--v-theme-error));
+$color-info: rgb(var(--v-theme-info));
+$color-success: rgb(var(--v-theme-success));
+$color-warning: rgb(var(--v-theme-warning));
