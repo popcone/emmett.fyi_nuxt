@@ -1,20 +1,52 @@
-@use './settings';
+@use './variables' as vars;
 @import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap&family=Red+Hat+Text:ital,wght@0,400;1,400&display=swap');
+
+////////
+//// Home page styles
+///////
 
 #layout {
   height: 100vh;
 }
 
-
 #index {
 
   h1.title {
+    
     font-family: 'Red Hat Text', sans-serif;
-    font-size: map-get(settings.$typography, h1, size) * 1.899;
     font-weight: 400;
     line-height: .955;
-    color: rgb(var(--v-theme-primary));
+    color: vars.$color-primary;
     opacity: .33;
+    
+    @media screen and (min-width: vars.$break-xxl) {
+        font-size: vars.$font-size-h1 * 2.441;
+    }
+  
+    @media screen and (min-width: 1440px) and (max-width: vars.$break-xxl) {
+        font-size: vars.$font-size-h1 * 1.899;
+    }
+  
+    @media screen and (max-width: 1440px) {
+        font-size: vars.$font-size-h1 * 1.563;
+    }
+    
+    @media screen and (max-width: vars.$break-xl) {
+        font-size: vars.$font-size-h1 * 1.25;
+    }
+  
+    @media screen and (max-width: vars.$break-lg) {
+        font-size: vars.$font-size-h1;
+    }
+    
+    @media screen and (max-width: 755px ) {
+        font-size: vars.$font-size-h3;
+    }
+    
+    @media screen and (max-width: vars.$break-md) {
+        font-size: vars.$font-size-h4;
+    }
+    
   }
 
   h1.title:nth-of-type(odd){
@@ -22,23 +54,47 @@
   }
   
   h1.title span.word {
+
     margin-right: 1rem;
+
+    @media screen and (max-width: vars.$break-md) {
+      margin-right: .5rem;
+    }
+
   }
   
   h1.title span.word::after {
-  content: '.';
-  font-size: var(--title);
-  font-size: map-get(settings.$typography, h4, size);
+
+    content: '.';
+    font-size: vars.$font-size-h3;
+
+      @media screen and (max-width: vars.$break-md) {
+        font-size: vars.$font-size-h4;
+      }
+
   }
+
 
   #header {
     
     .title-container {
+
       display: flex;
       flex-direction: row;
       align-items: flex-end;
       justify-content: center;
-      height: 20vh;
+
+      $title-container-height: 20vh;
+      height: $title-container-height;
+
+      @media screen and (max-width: vars.$break-lg) {
+        height: $title-container-height * .85;
+      }
+      
+      @media screen and (max-width: vars.$break-md) {
+        height: $title-container-height * .75;
+      }
+
     }
 
   }
@@ -48,9 +104,19 @@
 #appbar {
 
   h1.logo {
+
     font-family: 'Shrikhand', cursive !important;
-    font-size: map-get(settings.$typography, h5, size);
-    color: rgb(var(--v-theme-primary))
+    font-size: vars.$font-size-h4;
+    color: vars.$color-primary;
+
+      @media screen and (max-width: vars.$break-lg) {
+          font-size: vars.$font-size-h5;
+      }
+      
+      @media screen and (max-width: vars.$break-md) {
+          font-size: vars.$font-size-h6;
+      }
+
   }
 
 }
