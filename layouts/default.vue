@@ -2,6 +2,9 @@
 // IMPORTS
 import { watch, ref, onMounted } from "vue";
 import { useDisplay, useTheme } from "vuetify";
+// import { useMainStore } from "~/store/main";
+
+// const  = useMainStore();
 
 // TOGGLE THEME
 const theme = useTheme();
@@ -36,7 +39,7 @@ const { xxl } = useDisplay();
 </script>
 
 <template>
-  <v-layout id="layout" full-height="true" class="bg-background">
+  <v-layout id="layout" class="bg-background">
     <v-app-bar id="appbar" class="px-4" density="comfortable">
       <v-row>
         <v-col v-show="xxl" cols="1"></v-col>
