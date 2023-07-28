@@ -88,7 +88,9 @@ const { xxl } = useDisplay();
 
 <style lang="scss" scoped>
 /* adjust spacing between theme switch and icon */
-.theme-switch >>> .v-input__prepend {
-  margin-inline-end: 8px;
+.theme-switch {
+  :deep(.v-input__prepend) {
+    margin-inline-end: 8px;
+  }
 }
 </style>
