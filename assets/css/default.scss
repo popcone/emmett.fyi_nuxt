@@ -47,6 +47,10 @@
         font-size: vars.$font-size-h4;
     }
     
+    @media screen and (max-width: 450px) {
+        font-size: vars.$font-size-h5;
+    }
+    
   }
 
   h1.title:nth-of-type(odd){
@@ -76,6 +80,8 @@
 
 
   #header {
+
+    overflow: hidden;
     
     .title-container {
 
@@ -92,7 +98,7 @@
       }
       
       @media screen and (max-width: vars.$break-md) {
-        height: $title-container-height * .75;
+        height: $title-container-height * .65;
       }
 
     }
