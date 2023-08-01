@@ -37,7 +37,7 @@ const title = indexStore.title;
       <v-card id="portfolio">
         <v-row>
           <v-col>
-            <h4 class="text-h5 text-lg-h4">
+            <h4 class="text-h6 text-md-h5 text-lg-h4">
               If you've made it to this page, you already have access to my
               resume and a brief overview of my professional background and
               experience. If you're interested in learning more or scheduling an
