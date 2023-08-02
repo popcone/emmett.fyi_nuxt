@@ -1,42 +1,8 @@
-# Nuxt 3 Minimal Starter
+# Portfolio
+This is a collection of projects I have professionaly worked on. I am currently refactoring these works into Vue/Nuxt 3 projects to present a more streamlined portfolio. 
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Dive into the Building Blocks
+Feel free to dive into the source code and discover the building blocks of these projects.
 
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Visit the Production Site
+Check out the live version @ [emmett.fyi](https://www.emmett.fyi)
