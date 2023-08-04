@@ -40,46 +40,47 @@ const { xxl } = useDisplay();
 
 <template>
   <v-layout id="layout" class="bg-background">
-    <v-app-bar id="appbar" class="px-4" density="comfortable">
-      <v-row>
-        <v-col v-show="xxl" cols="1"></v-col>
-        <!-- LOGO -->
-        <v-col cols="6" xxl="5" class="d-flex justify-start align-center">
-          <h1 class="logo">emmett.fyi</h1>
-        </v-col>
-        <!-- NAV BUTTONS -->
-        <v-col cols="6" xxl="5" class="d-flex justify-end align-center">
-          <div>
-            <v-btn
-              href="https://github.com/popcone/emmett.fyi_nuxt"
-              target="blank"
-              aria-label="Github Profile"
-              prepend-icon="mdi-github"
-              density="compact"
-              class="text-capitalize text-body-2"
-              variant="plain"
-              :class="switchColors('text-primary')"
-            >
-              <span class="text-surface">Github</span>
-            </v-btn>
-          </div>
-          <v-divider color="surface" vertical></v-divider>
-          <div class="ml-4">
-            <v-switch
-              prepend-icon="mdi-theme-light-dark"
-              density="compact"
-              true-value="light"
-              false-value="dark"
-              v-model="themeValue"
-              class="theme-switch d-inline d-flex"
-              :class="switchColors('text-primary')"
-            ></v-switch>
-          </div>
-        </v-col>
-        <v-col v-show="xxl" cols="1"></v-col>
-      </v-row>
-    </v-app-bar>
-
+    <ClientOnly>
+      <v-app-bar id="appbar" class="px-4" density="comfortable">
+        <v-row>
+          <v-col v-show="xxl" cols="1"></v-col>
+          <!-- LOGO -->
+          <v-col cols="6" xxl="5" class="d-flex justify-start align-center">
+            <h1 class="logo">emmett.fyi</h1>
+          </v-col>
+          <!-- NAV BUTTONS -->
+          <v-col cols="6" xxl="5" class="d-flex justify-end align-center">
+            <div>
+              <v-btn
+                href="https://github.com/popcone/emmett.fyi_nuxt"
+                target="blank"
+                aria-label="Github Profile"
+                prepend-icon="mdi-github"
+                density="compact"
+                class="text-capitalize text-body-2"
+                variant="plain"
+                :class="switchColors('text-primary')"
+              >
+                <span class="text-surface">Github</span>
+              </v-btn>
+            </div>
+            <v-divider color="surface" vertical></v-divider>
+            <div class="ml-4">
+              <v-switch
+                prepend-icon="mdi-theme-light-dark"
+                density="compact"
+                true-value="light"
+                false-value="dark"
+                v-model="themeValue"
+                class="theme-switch d-inline d-flex"
+                :class="switchColors('text-primary')"
+              ></v-switch>
+            </div>
+          </v-col>
+          <v-col v-show="xxl" cols="1"></v-col>
+        </v-row>
+      </v-app-bar>
+    </ClientOnly>
     <v-main>
       <slot></slot>
     </v-main>
