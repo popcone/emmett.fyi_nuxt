@@ -80,10 +80,10 @@ const { xxl } = useDisplay();
           <v-col v-show="xxl" cols="1"></v-col>
         </v-row>
       </v-app-bar>
+      <v-main>
+        <slot></slot>
+      </v-main>
     </ClientOnly>
-    <v-main>
-      <slot></slot>
-    </v-main>
   </v-layout>
 </template>
 
