@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 // import { storeToRefs } from "pinia";
 import { usePortfolioNavStore } from "~/store/portfolioNav";
-import { useLinkUrlUndefined as urlUndefined } from "~/composables/useLinkUrlUndefined";
+import { useIsUrlUndefined as isUrlUndefined } from "~/composables/useIsUrlUndefined";
 
 // STATE MANAGEMENT
 const store = usePortfolioNavStore();
@@ -22,7 +22,7 @@ const { projects } = store;
         variant="text"
         :border="true"
         :rounded="0"
-        :disabled="urlUndefined(project.link)"
+        :disabled="isUrlUndefined(project.link)"
         >{{ project.title }}</v-btn
       >
     </div>
