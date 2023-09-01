@@ -1,61 +1,76 @@
+<script lang="ts" setup>
+////
+// Imports
+import { useDisplay } from "vuetify";
+import { ref, inject } from "vue";
+import { quizInjectionKey } from "~/composables/utils/quizInjectionKey";
+import { useQuizStore } from "~/store/quiz";
+
+// Display
+const { name: displayName } = useDisplay();
+let currentDisplaySize = ref(displayName);
+
+// Styles & Classes
+const { classes, styles } = useQuizStore();
+
+// Props Injection
+const { translations, quiz, imgBase } = inject(quizInjectionKey);
+
+const brand = quiz.meta.slug;
+const logo = quiz.meta.logo;
+
+////
+</script>
+
 <template>
-  <div>
+  <v-container id="quiz-hero" class="pa-0" fluid>
     <v-row>
-      <v-col cols="12">
+      <v-col>
         <v-img
-          :src="
-            require('@/assets/heros/hero-' +
-              this.$vuetify.breakpoint.name +
-              '.jpg')
-          "
-          :min-height="heroHeight"
-          class="d-flex align-center"
+          :src="`${imgBase}/quiz/heros/${brand}/hero-${currentDisplaySize}.jpg`"
+          cover
+          max-height="317"
         >
-          <div>
-            <v-container class="maxWidth">
-              <v-card color="transparent">
-                <v-row>
-                  <v-col cols="6">
-                    <div class="d-flex justify-center mt-n8 mt-sm-n4">
-                      <v-img
-                        :src="require('@/assets/logos/logo-xbss.png')"
-                        contain
-                        :max-width="maxLogo"
-                      >
-                      </v-img>
-                    </div>
-                    <div>
-                      <h6
-                        class="
-                          text-center text-caption text-md-body-1 text-uppercase
-                        "
-                      >
-                        {{ translate.findSolution }}
-                      </h6>
-                    </div>
-                  </v-col>
-                  <v-col cols="6"></v-col>
-                </v-row>
-              </v-card>
-            </v-container>
-          </div>
+          <v-container class="fill-height pa-0" :class="classes.maxWidth">
+            <v-card width="960">
+              <v-row>
+                <v-col cols="6">
+                  <div :class="classes.logoClass">
+                    <v-img
+                      :src="`${imgBase}/quiz/logos/${brand}/${logo.src}`"
+                      max-width="315"
+                      width="315"
+                      :aspect-ratio="logo.aspect_ratio"
+                    >
+                    </v-img>
+                  </div>
+                  <div :class="classes.logoClass">
+                    <h6 class="text-md-body-1 text-uppercase">
+                      {{ translations.find_your_solution }}
+                    </h6>
+                  </div>
+                </v-col>
+                <v-col cols="6"></v-col>
+              </v-row>
+            </v-card>
+          </v-container>
         </v-img>
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
-<script>
-import translate from "../data/translation.json";
+<!-- <script>
+import translations from "../data/translation.json";
 
 export default {
   name: "HeroSection",
   components: {},
   props: {
-    translate: {
+    translations: {
       default: 
       function () {
-        return translate[this.$route.name];
+        return translations[this.$route.name];
       }
     },
   },
@@ -91,7 +106,11 @@ export default {
     },
   },
 };
-</script>
+</script> -->
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.maxWidth {
+  max-width: 960px;
+}
+</style>
