@@ -1,12 +1,13 @@
 <script lang="ts" setup>
-// IMPORTS
+////
+// Imports
 </script>
 
 <template>
-  <v-layout>
-    <v-main>
+  <v-layout id="layout" full-height="true">
+    <v-container class="pa-0" fluid>
       <slot></slot>
-    </v-main>
+    </v-container>
   </v-layout>
 </template>
 
