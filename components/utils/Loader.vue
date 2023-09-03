@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 ////
+import { ref } from "vue";
 // Props
 const props = defineProps({
   message: { type: String, required: true },
@@ -14,17 +15,22 @@ const overlay = ref(true);
   <div id="loader" class="text-center">
     <v-overlay
       :model-value="overlay"
-      class="align-center justify-center bg-primary"
+      class="text-center align-center justify-center"
       persistent
+      scrim="background"
     >
-      <v-progress-linear stream height="5"> </v-progress-linear>
-      <p>{{ message }}</p>
+      <v-progress-circular
+        indeterminate
+        size="64"
+        class="mb-2"
+      ></v-progress-circular>
+      <p class="font-italic">{{ message }}</p>
     </v-overlay>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .v-overlay__scrim {
-  opacity: 1;
+  opacity: 1 !important;
 }
 </style>
