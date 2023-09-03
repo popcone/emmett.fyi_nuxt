@@ -53,7 +53,7 @@ provide(quizInjectionKey, {
   translations,
 });
 
-const colors = quiz.meta.colors;
+const colors = ref(quiz.meta.colors);
 
 ////
 </script>
@@ -70,7 +70,7 @@ const colors = quiz.meta.colors;
     <PortfolioQuizFooter />
   </div>
 </template>
-<style lang="scss" scoped module="quiz-classes">
+<style lang="scss" scoped>
 /*  */
 @use "~/assets/css/quiz";
 @use "./assets/css/settings";
