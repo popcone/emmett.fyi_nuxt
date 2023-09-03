@@ -53,21 +53,89 @@ provide(quizInjectionKey, {
   translations,
 });
 
+const colors = quiz.meta.colors;
+
 ////
 </script>
 
 <template>
   <div v-if="validateBrand === false">
     <v-card>
-      <Loader message="Redirecting" />
+      <Loader message="Redirecting..." />
     </v-card>
   </div>
-  <div :id="`quiz-${brand}`" v-else>
+  <div :id="`quiz-wrapper-${brand}`" class="bg-white" v-else>
     <PortfolioQuizToolbar />
     <PortfolioQuizMain />
     <PortfolioQuizFooter />
   </div>
 </template>
-<style>
+<style lang="scss" scoped module="quiz-classes">
+/*  */
+@use "~/assets/css/quiz";
+@use "./assets/css/settings";
+
+/*  */
+div[id^="quiz-"] {
+  :deep(.bg-primary) {
+    background-color: v-bind("colors.primary") !important;
+  }
+
+  :deep(.bg-secondary) {
+    background-color: v-bind("colors.secondary") !important;
+  }
+
+  :deep(.bg-tertiary) {
+    background-color: v-bind("colors.tertiary") !important;
+  }
+
+  :deep(.bg-accent) {
+    background-color: v-bind("colors.accent") !important;
+  }
+
+  :deep(.text-primary) {
+    color: v-bind("colors.primary") !important;
+  }
+
+  :deep(.text-secondary) {
+    color: v-bind("colors.secondary") !important;
+  }
+
+  :deep(.text-tertiary) {
+    color: v-bind("colors.tertiary") !important;
+  }
+
+  :deep(.text-accent) {
+    color: v-bind("colors.accent") !important;
+  }
+
+  :deep(.text-error) {
+    color: v-bind("colors.error") !important;
+  }
+
+  :deep(.text-info) {
+    color: v-bind("colors.info") !important;
+  }
+
+  :deep(.text-success) {
+    color: v-bind("colors.success") !important;
+  }
+
+  :deep(.text-warning) {
+    color: v-bind("colors.warning") !important;
+  }
+
+  :deep(.text-black) {
+    color: v-bind("colors.black") !important;
+  }
+
+  :deep(.text-white) {
+    color: v-bind("colors.white") !important;
+  }
+
+  :deep(.text-grey) {
+    color: v-bind("colors.grey") !important;
+  }
+}
 /*  */
 </style>

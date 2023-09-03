@@ -71,7 +71,7 @@ const { styles } = useQuizStore();
       </v-row>
 
       <!-- // Packs -->
-      <v-row class="py-6 py-md-12 bg-tertiary">
+      <v-row class="py-6 py-md-12 bg-accent">
         <v-col cols="12" class="px-6 px-md-0 text-center">
           <h6 v-html="translations.recommend_pack"></h6>
 

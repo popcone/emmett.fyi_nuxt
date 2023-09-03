@@ -4,9 +4,9 @@ export const useQuizStore = defineStore('quiz', {
   
   state: (): State => ({
     classes: {
-      buttonText: "text-body-2 font-weight-medium px-9 white--text bg-primary",
+      buttonText: "text-body-2 font-weight-medium px-9 bg-primary",
       logoClass: "d-flex justify-center my-1 text-black",
-      responseText: "flex-grow-1 text-center text-body-2 text-md-body-1 text-black",
+      responseText: "flex-grow-1 text-center text-body-2 text-md-body-1",
       vCardClass: "d-flex align-center px-0 v-item-border",
     },
     styles: {

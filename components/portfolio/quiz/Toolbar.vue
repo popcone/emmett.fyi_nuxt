@@ -15,7 +15,7 @@ const toolbar = translations.toolbar;
 <template>
   <div id="quiz-toolbar">
     <v-toolbar
-      class="px-xs-12 px-sm-3 px-md-6 px-lg-12"
+      class="px-xs-12 px-sm-3 px-md-6 px-lg-12 bg-primary"
       color="primary"
       height="50"
     >

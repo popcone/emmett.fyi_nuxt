@@ -96,11 +96,12 @@ interface Score {
           height="35"
           color="primary"
           bg-color="secondary"
+          bg-opacity=".9"
         >
-          <span v-show="questionIndex > 0" class="text-body-2">
+          <span v-show="questionIndex > 0" class="text-body-2 text-white">
             {{ ((questionIndex / questions.length) * 100).toFixed(0) }}
             <sup>%&nbsp;</sup>
-            <span v-html="translations.complete"></span>
+            <span v-html="translations.complete" class="text-white"></span>
           </span>
         </v-progress-linear>
       </v-row>
@@ -226,7 +227,7 @@ interface Score {
     <div v-if="questionMax">
       <!-- <div> -->
       <v-card v-if="calculatingScoreTotal">
-        <Loader message="Calculating your results..." />
+        <Loader message="Calculating..." />
       </v-card>
       <PortfolioQuizResults v-if="!calculatingScoreTotal" :score="score" />
     </div>
