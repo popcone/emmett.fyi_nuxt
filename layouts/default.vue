@@ -2,9 +2,6 @@
 // IMPORTS
 import { watch, ref, onMounted } from "vue";
 import { useDisplay, useTheme } from "vuetify";
-// import { useMainStore } from "~/store/main";
-
-// const  = useMainStore();
 
 // TOGGLE THEME
 const theme = useTheme();

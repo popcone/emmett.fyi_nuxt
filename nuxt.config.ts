@@ -17,6 +17,19 @@ export default defineNuxtConfig({
         '@invictus.codes/nuxt-vuetify',
         '@pinia/nuxt',
     ],
+    components: [
+        // ~/calendar-module/components/event/Update.vue => <EventUpdate />
+        '~/components', { path: '~/components/utils/', pathPrefix: false },
+    ],
+    runtimeConfig: {
+        quizApiSecret: '',
+        apiBaseDev: '',
+        apiBaseProd: '',
+        public: {
+            apiBase: '',
+            cdnImgBase: ''
+        }
+    },
     vuetify: {
 
         moduleOptions: {
@@ -73,21 +86,21 @@ export default defineNuxtConfig({
                 global: {
                     ripple: false,
                   },
-                VDivider: {
-                    color: 'primary',
+                VAppBar: {
+                    color: 'transparent',
+                    elevation: 0,
+                },
+                VBtn: {
+                    elevation: 0,
+                    variant: 'flat',
                 },
                 VCard: {
                     rounded: 0,
                     color: 'transparent',
                     variant: 'flat',
                 },
-                VBtn: {
-                    elevation: 0,
-                    variant: 'flat',
-                },
-                VAppBar: {
-                    color: 'transparent',
-                    elevation: 0,
+                VDivider: {
+                    color: 'primary',
                 },
                 VNavigationDrawer: {
                     color: 'transparent',
