@@ -3,8 +3,8 @@ export const quizInjectionKey = Symbol() as InjectionKey<QuizInjection>;
 
 interface QuizInjection {
     brand: string | string[],
-    quiz: object,
+    quiz: { [key: string]: any },
     cdnImgBase: string,
     locale: string,
-    translations: any,
+    translations: { [key: string]: any },
 }

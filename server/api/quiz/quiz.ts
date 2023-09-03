@@ -6,11 +6,12 @@ export default defineEventHandler((event) => {
     
     // URL Parameters
     const query = getQuery(event)
-    const brand = query.brand;
+    const brand = String(query.brand);
     const locale = String(query.locale);
 
+    type ClassObj = Record<string, unknown>
     class Quiz {
-        meta: object; questions: object; packs: object; components: object;
+        meta: ClassObj; questions: ClassObj; packs: ClassObj; components: ClassObj;
         constructor() {
             this.meta = {};
             this.questions = {};
