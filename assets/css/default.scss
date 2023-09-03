@@ -5,8 +5,14 @@
 //// Home page styles
 ///////
 
+
+body {
+  background-color: vars.$color-background;
+  color: vars.$color-surface;
+}
+
 #layout {
-  height: 100vh;
+  height: 100%;
 }
 
 #index {
