@@ -117,8 +117,11 @@ interface Score {
       <v-container v-show="id === questionIndex">
         <!-- Question  -->
         <v-row class="my-3 my-md-7 px-3 px-lg-6">
-          <v-col>
-            <h3 class="text-center" v-html="question.text"></h3>
+          <v-col class="text-center">
+            <h3
+              class="text-h5 text-md-h3 font-weight-medium"
+              v-html="question.text"
+            ></h3>
           </v-col>
         </v-row>
 

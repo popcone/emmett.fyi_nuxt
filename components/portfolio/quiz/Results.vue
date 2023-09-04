@@ -2,6 +2,7 @@
 ////
 // Imports
 import { computed, inject } from "vue";
+import { useDisplay } from "vuetify";
 import { quizInjectionKey } from "~/composables/utils/quizInjectionKey";
 import { useQuizStore } from "~/store/quiz";
 
@@ -31,6 +32,23 @@ let pack = computed(() => {
 // Styles & Classes
 const { styles } = useQuizStore();
 
+// Display
+const { name: displayName, smAndUp } = useDisplay();
+let currentDisplaySize = ref(displayName);
+console.log(useDisplay());
+
+// Calculate Logo Width
+const calculateLogoWidth = computed(() => {
+  const logoWidth = 300;
+  const displaySize = currentDisplaySize.value;
+
+  return displaySize === "xs"
+    ? logoWidth * 0.8
+    : displaySize === "sm"
+    ? logoWidth * 0.65
+    : logoWidth;
+});
+
 ////
 </script>
 
@@ -43,15 +61,21 @@ const { styles } = useQuizStore();
           <v-img
             class="mx-auto"
             :src="`${imgBase}/quiz/logos/${brand}/${logo.src}`"
-            max-width="300"
+            :max-width="calculateLogoWidth"
             :aspect-ratio="logo.aspect_ratio"
             contain
           ></v-img>
         </v-col>
         <!-- // Your Personalized Solution -->
-        <v-col class="text-center" cols="12">
-          <h4 class="font-weight-bold" v-html="translations.what_solution"></h4>
-          <h6 v-html="translations.money_back_guarantee"></h6>
+        <v-col
+          class="text-center mt-0 px-6 px-md-0 py-0 align-center"
+          cols="12"
+        >
+          <h4
+            class="font-weight-bold text-h5 text-md-h4"
+            v-html="translations.what_solution"
+          ></h4>
+          <h6 v-show="smAndUp" v-html="translations.money_back_guarantee"></h6>
         </v-col>
       </v-row>
 
@@ -60,9 +84,12 @@ const { styles } = useQuizStore();
         ><v-col>
           <v-row class="text-center">
             <v-col>
-              <h6 v-html="translations.health_fitness" class="text-white"></h6>
+              <h6
+                v-html="translations.health_fitness"
+                class="text-white text-body-1 text-md-h6"
+              ></h6>
               <h4
-                class="text-white font-weight-bold"
+                class="text-white font-weight-bold text-h5 text-md-h4"
                 v-html="score.goal || 'Lose Weight'"
               ></h4>
             </v-col>
@@ -73,29 +100,34 @@ const { styles } = useQuizStore();
       <!-- // Packs -->
       <v-row class="py-6 py-md-12 bg-accent">
         <v-col cols="12" class="px-6 px-md-0 text-center">
-          <h6 v-html="translations.recommend_pack"></h6>
+          <h6
+            v-html="translations.recommend_pack"
+            class="text-body-1 text-md-h6"
+          ></h6>
 
           <h4
-            class="font-weight-bold mt-2 mt-sm-3 text-center"
+            class="font-weight-bold mt-2 mt-sm-3 text-center text-h5 text-md-h4"
             v-html="pack.title"
           ></h4>
         </v-col>
         <v-col cols="12" class="px-3 px-md-0 d-flex justify-center">
           <v-card
-            class="pa-6 pa-md-12"
+            class="pa-6 pa-md-12 text-center"
             :ripple="false"
             color="transparent"
             target="_blank"
             link
             :href="pack.url"
             variant="text"
+            width="100%"
           >
             <v-img
               :src="`${imgBase}/quiz/packs/${brand}/${pack.image}`"
-              contain
               max-width="600"
               max-height="600"
-              width="600"
+              class="mx-auto"
+              cover
+              eager
             ></v-img>
           </v-card>
         </v-col>
@@ -116,7 +148,10 @@ const { styles } = useQuizStore();
       <!-- // Components Title -->
       <v-row class="mt-12 px-6 px-md-0 justify-center text-center">
         <v-col>
-          <h3 class="font-weight-bold" v-html="translations.what_solution"></h3>
+          <h3
+            class="font-weight-bold text-h4 text-md-h3"
+            v-html="translations.what_solution"
+          ></h3>
         </v-col>
       </v-row>
 
@@ -130,13 +165,13 @@ const { styles } = useQuizStore();
           color="grey-lighten-2"
         >
           <v-row class="d-flex align-center">
-            <v-col xs="12" sm="5" class="pa-6 bg-component">
+            <v-col cols="12" sm="5" class="pa-6 bg-component">
               <v-img
                 :src="`${imgBase}/quiz/components/${brand}/${packComponents[component].image}`"
                 contain
               ></v-img>
             </v-col>
-            <v-col xs="12" sm="7">
+            <v-col cols="12" sm="7">
               <h6
                 class="text-break pt-3 pt-sm-0 px-3 text-center text-black font-weight-bold"
                 v-html="packComponents[component].title"
@@ -146,7 +181,7 @@ const { styles } = useQuizStore();
           <v-row>
             <v-col class="pt-0 pt-sm-6 pb-0 px-0">
               <p
-                class="text-break text-black"
+                class="text-break text-black text-body-2 text-body-md-1"
                 v-html="packComponents[component].description"
               ></p>
             </v-col>
@@ -195,6 +230,7 @@ const { styles } = useQuizStore();
     rgba(0, 0, 0, 1) 100%
   );
 }
+
 .bg-component {
   background: rgb(241, 241, 241);
   background: linear-gradient(
