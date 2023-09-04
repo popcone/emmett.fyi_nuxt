@@ -19,6 +19,28 @@ const { translations, quiz, imgBase } = inject(quizInjectionKey);
 const brand = quiz.meta.slug;
 const logo = quiz.meta.logo;
 
+const calculateHeroHeight = computed(() => {
+  const sizes = {
+    xs: 250,
+    sm: 289,
+    md: 289,
+    lg: 317,
+    xl: 317,
+    xxl: 317,
+  };
+  return sizes[currentDisplaySize.value];
+});
+
+const calculateLogoWidth = computed(() => {
+  const logoWidth = 315;
+  const displaySize = currentDisplaySize.value;
+  return displaySize === "xs"
+    ? logoWidth * 0.5
+    : displaySize === "sm"
+    ? logoWidth * 0.75
+    : logoWidth;
+});
+
 ////
 </script>
 
@@ -30,22 +52,25 @@ const logo = quiz.meta.logo;
           :src="`${imgBase}/quiz/heros/${brand}/hero-${currentDisplaySize}.jpg`"
           cover
           max-height="317"
+          :min-height="calculateHeroHeight"
         >
           <v-container class="fill-height pa-0" :class="classes.maxWidth">
-            <v-card width="960">
+            <v-card :width="960">
               <v-row>
-                <v-col cols="6">
-                  <div :class="classes.logoClass">
+                <v-col cols="6" class="text-center">
+                  <div :class="classes.logoClass" class="ma-0">
                     <v-img
                       :src="`${imgBase}/quiz/logos/${brand}/${logo.src}`"
-                      max-width="315"
-                      width="315"
+                      :max-width="calculateLogoWidth"
                       :aspect-ratio="logo.aspect_ratio"
+                      cover
                     >
                     </v-img>
                   </div>
                   <div :class="classes.logoClass">
-                    <h6 class="text-md-body-1 text-uppercase">
+                    <h6
+                      class="text-center text-caption text-md-body-1 text-uppercase"
+                    >
                       {{ translations.find_your_solution }}
                     </h6>
                   </div>
@@ -60,55 +85,6 @@ const logo = quiz.meta.logo;
   </v-container>
 </template>
 
-<!-- <script>
-import translations from "../data/translation.json";
-
-export default {
-  name: "HeroSection",
-  components: {},
-  props: {
-    translations: {
-      default: 
-      function () {
-        return translations[this.$route.name];
-      }
-    },
-  },
-  data() {
-    return {};
-  },
-  computed: {
-    heroHeight() {
-      switch (this.$vuetify.breakpoint.name) {
-        case "xs":
-          return 250;
-        case "sm":
-          return 289;
-        case "md":
-          return 289;
-        case "lg":
-          return 317;
-        case "xl":
-          return 317;
-        default:
-          return 317;
-      }
-    },
-    maxLogo() {
-      switch (this.$vuetify.breakpoint.name) {
-        case "xs":
-          return 315*.50;
-        case "sm":
-          return 315*.75;
-        default:
-          return 315;
-      }
-    },
-  },
-};
-</script> -->
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .maxWidth {
   max-width: 960px;

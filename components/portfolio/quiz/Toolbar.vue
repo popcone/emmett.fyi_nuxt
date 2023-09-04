@@ -1,13 +1,42 @@
 <script lang="ts" setup>
 ////
 // Imports
-import { inject } from "vue";
+import { inject, computed } from "vue";
+import { useDisplay } from "vuetify";
 import { quizInjectionKey } from "~/composables/utils/quizInjectionKey";
 
 // Props Injection
-const { translations, imgBase } = inject(quizInjectionKey);
+const { translations, imgBase, brand } = inject(quizInjectionKey);
 
 const toolbar = translations.toolbar;
+
+const route = useRoute();
+const locale = ref(route.query.locale);
+
+const router = useRouter();
+
+// const changeLocale = (localeValue: string) => {
+//   router.push({ query: { locale: localeValue } });
+// };
+
+// watch(
+//   () => locale,
+//   (locale) => {
+//     router.push({ query: { locale: locale.value } });
+//   }
+// );
+
+// console.log(locale.value);
+
+// Display
+const { name: displayName } = useDisplay();
+let currentDisplaySize = ref(displayName);
+
+// Resize Logo based on display size
+const calculateLogoWidth = computed(() => {
+  const logoWidth = 196;
+  return currentDisplaySize.value === "xs" ? logoWidth * 0.9 : logoWidth;
+});
 
 ////
 </script>
@@ -19,10 +48,14 @@ const toolbar = translations.toolbar;
       color="primary"
       height="50"
     >
-      <v-img
-        :src="`${imgBase}/quiz/logos/_global/logo-tbb-white-small.png`"
-        max-width="196"
-      ></v-img>
+      <div class="ml-3 ml-sm-0">
+        <v-img
+          :src="`${imgBase}/quiz/logos/_global/logo-tbb-white-small.png`"
+          :max-width="calculateLogoWidth"
+          :width="calculateLogoWidth"
+          contain
+        ></v-img>
+      </div>
       <div class="flex-grow-1"></div>
       <div>
         <v-menu
@@ -52,23 +85,30 @@ const toolbar = translations.toolbar;
                 }}</v-list-item-title>
                 <v-divider class="my-3"></v-divider>
                 <div v-for="(item, index) in toolbar.menu.locale" :key="index">
-                  <v-list-item-subtitle>{{ item.title }}</v-list-item-subtitle>
+                  <v-list-item-subtitle class="mb-2">{{
+                    item.title
+                  }}</v-list-item-subtitle>
                   <v-row>
                     <v-col
                       cols="6"
                       v-for="(link, i) in item.links"
                       :key="link[i]"
+                      class="d-flex"
                     >
                       <v-img
                         :src="`${imgBase}/quiz/icons/_global/flag-${link.slug.slice(
                           -2
                         )}.png`"
                         max-height="27"
-                        position="left"
-                        class="pl-9"
+                        max-width="27"
                         eager
-                        contain
-                        >{{ link.title }}</v-img
+                      ></v-img>
+                      <NuxtLink
+                        :to="{
+                          query: { locale: link.slug },
+                        }"
+                        class="ml-2"
+                        >{{ link.title }}</NuxtLink
                       >
                     </v-col>
                   </v-row>
@@ -87,18 +127,6 @@ const toolbar = translations.toolbar;
   </div>
 </template>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-// .resize-tbb-logo {
-//   max-width: 188px !important;
-//   max-height: 15px !important;
-// }
-
-// .toolbar {
-//   border-bottom: solid 1px #fff;
-// }
-// .v-toolbar__content,
-// .v-toolbar__extension {
-//   padding: 0px !important;
-// }
+/* */
 </style>
