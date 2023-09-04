@@ -1,18 +1,16 @@
-# Portfolio <span style="font-size:.49em;">(Work in Progress)</span>
+# Portfolio
 This is a collection of projects I have professionaly worked on. I am currently refactoring these works into Vue/Nuxt 3 projects to present a more streamlined portfolio.
 
-[Visit the Production Site](https://www.emmett.fyi)
+| [Visit the Production Site](https://www.emmett.fyi) |
+| ----------- |
+
 
 ## Dive into the Building Blocks
-Feel free to dive into the source code and discover the building blocks of these projects.
+Dive into the source code and discover the building blocks of these projects.
+<p>&nbsp;</p>
 
-
-
-
-<h3 align="left">Development Tools:</h3>
-<!-- Insert a table -->
-
-<table style="width: 700px;">
+> ### Tools
+<table>
     <tr>
         <th>Discipline</th>
         <th>Tools</th>
@@ -82,6 +80,15 @@ Feel free to dive into the source code and discover the building blocks of these
         </td>
     </tr>
 </table>
+<p>&nbsp;</p>
 
+> ### Projects
+
+| Sections | Status |
+| ----------- | ----------- |
+| [Marketing Assessments](https://www.example.com) | [![Generic badge](https://img.shields.io/badge/Source-Ready-mediumgreen.svg)](/tree/dev/global-readme-docs/pages/portfolio/quiz#readme)  |
+| [Product Guides Generator](https://www.example.com) | [![Generic badge](https://img.shields.io/badge/Source-In_Progress-gold.svg)](/tree/dev/global-readme-docs/pages/portfolio/quiz#readme)  |
+| [Product Pricing API](https://www.example.com) | [![Generic badge](https://img.shields.io/badge/Source-Backlogged-red.svg)](/tree/dev/global-readme-docs/pages/portfolio/quiz#readme)  |
+| [Event Pages](https://www.example.com) | [![Generic badge](https://img.shields.io/badge/Source-Backlogged-red.svg)](/tree/dev/global-readme-docs/pages/portfolio/quiz#readme)  |
 
 
