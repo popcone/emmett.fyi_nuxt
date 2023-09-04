@@ -13,7 +13,7 @@ const { translations } = inject(quizInjectionKey);
 <template>
   <div id="quiz-footer">
     <v-container class="py-12">
-      <p class="text-body-2">
+      <p class="text-caption text-body-2">
         {{ translations.disclaimer }} &copy; {{ new Date().getFullYear() }}
         {{ translations.footer }}
       </p>
