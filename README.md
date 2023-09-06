@@ -88,9 +88,9 @@ Dive into the source code and discover the building blocks of these projects.
 
 | Name | Status | Source |
 | ----------- | ----------- | ----------- |
-| Marketing Assessments | [![Generic badge](https://img.shields.io/badge/81%_-Integrated-mediumgreen.svg)](/pages/portfolio/quiz#readme) | [View](/pages/portfolio/quiz#readme) | 
-| Product Guides / CMS | [![Generic badge](https://img.shields.io/badge/45%_-In_Progress-gold.svg)](#)  | |
-| Pricing API Sheets / CMS | [![Generic badge](https://img.shields.io/badge/33%_-In_Progress-red.svg)](#)  | |
-| Event Pages | [![Generic badge](https://img.shields.io/badge/25%_-In_Progress-red.svg)](#) | |
+| Marketing Assessments | [![Generic badge](https://img.shields.io/badge/_-Integrated-mediumgreen.svg)](/pages/portfolio/quiz#readme) | [View](/pages/portfolio/quiz#readme) | 
+| Product Guides / CMS | [![Generic badge](https://img.shields.io/badge/_-Integrating-gold.svg)](#)  | |
+| Pricing API Sheets / CMS | [![Generic badge](https://img.shields.io/badge/_-Backlogged-red.svg)](#)  | |
+| Event Pages | [![Generic badge](https://img.shields.io/badge/_-Backlogged-red.svg)](#) | |
 
 
