@@ -1,5 +1,8 @@
 @use './settings';
 
+// Grid 
+$max-width: 1280px;
+
 // Grid breakpoints
 $break-xs: map-get(settings.$grid-breakpoints, xs);
 $break-sm: map-get(settings.$grid-breakpoints, sm);
