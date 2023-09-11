@@ -27,11 +27,13 @@ HomeNavStore.$subscribe(async (mutation, state) => {
 
 // Display
 const { mdAndDown, mdAndUp, lgAndUp } = useDisplay();
+
+const expandPortfolioContentBullets = ref(false);
 </script>
 
 <template>
   <v-container class="d-flex justify-center" fluid>
-    <v-card v-if="projectUndefined" width="100vw">
+    <v-card v-if="projectUndefined" width="100vw" class="mt-6">
       <v-row class="px-0">
         <v-col cols="0" md="0" lg="1" xl="2"> </v-col>
         <v-col cols="12" md="6" lg="5" xl="4" class="px-3 px-xl-12 px-xxl-16">
@@ -89,27 +91,45 @@ const { mdAndDown, mdAndUp, lgAndUp } = useDisplay();
         <v-col cols="0" md="0" lg="1" xl="2"> </v-col>
       </v-row>
     </v-card>
-    <v-card id="portfolio" class="px-4 px-xl-0 d-flex justify-center" v-else>
+    <v-card
+      id="portfolio"
+      class="px-4 px-xl-0 d-flex justify-center mt-12"
+      :data-portfolio-summary="project.id"
+      v-else
+    >
       <!-- Portfolio -->
       <v-row>
         <!-- Portfolio Title -->
-        <v-col cols="12" class="text-primary d-flex align-center">
+        <v-col
+          cols="12"
+          class="text-primary d-flex"
+          :class="lgAndUp ? '' : 'flex-column'"
+        >
           <div class="flex-grow-1">
             <h4 class="portfolio-title text-h5 text-lg-h4 font-weight-medium">
               {{ project.title }}
             </h4>
           </div>
-          <div>
+          <div class="d-flex">
             <v-btn
-              v-if="!isUrlUndefined(project.source)"
-              :href="project.source"
-              class="pa-0 text-primary text-capitalize text-body-2"
+              :href="project.links.production"
+              size="x-small"
+              density="dense"
+              variant="plain"
+              class="pa-0 text-primary text-capitalize text-body-1"
+              >Production</v-btn
+            >
+            <v-divider class="mx-4" vertical></v-divider>
+            <v-btn
+              v-if="!isUrlUndefined(project.links.source)"
+              :href="project.links.source"
+              class="pa-0 text-primary text-capitalize text-body-1"
               density="dense"
               variant="plain"
               target="_blank"
               size="x-small"
             >
-              <span v-show="lgAndUp">View Source Code</span>
+              <span>Source Code</span>
               <span>
                 <v-icon class="justify-end text-tertiary ml-2" size="small"
                   >mdi-arrow-top-right</v-icon
@@ -130,70 +150,68 @@ const { mdAndDown, mdAndUp, lgAndUp } = useDisplay();
                   <v-row class="mb-3 mb-md-6">
                     <v-col cols="12">
                       <h4 class="text-body-1 text-md-h5 text-xl-h4">
-                        {{ project.tag }}
+                        {{ project.description }}
                       </h4>
                     </v-col>
                   </v-row>
                   <v-row>
-                    <!-- Project Notes -->
-                    <v-col cols="12" md="6" lg="4" xl="3" class="pr-lg-8">
-                      <v-row>
-                        <v-col cols="12">
-                          <p class="text-primary">Features</p>
-                          <v-divider class="my-3"></v-divider>
-                          <v-list
-                            lines="one"
-                            bg-color="transparent"
-                            class="pr-2"
-                          >
-                            <v-list-item
-                              v-for="(point, id) of project.points.highlights"
-                              :key="id"
-                              :title="point"
-                              class="pa-1 mb-2"
-                              variant="plain"
-                              density="compact"
-                              style="width: 30ch"
-                            ></v-list-item>
-                          </v-list>
-                        </v-col>
-                      </v-row>
-                    </v-col>
-                    <!-- Project Links -->
-                    <v-col cols="12" md="6" lg="8" xl="9" class="pl-lg-16">
-                      <p v-if="mdAndDown" class="text-primary mb-3">Links</p>
-                      <div v-for="(projectLink, id) in project.links" :key="id">
+                    <!-- Behind the Work -->
+                    <v-col cols="12">
+                      <h5 class="text-primary mb-3">Behind the Work</h5>
+                      <div
+                        width="100%"
+                        class="content-bullets"
+                        @mouseover.capture="
+                          expandPortfolioContentBullets = true
+                        "
+                        @mouseout="expandPortfolioContentBullets = false"
+                      >
                         <v-card
-                          v-for="(link, id) in projectLink"
+                          v-for="(bullet, id) in project.bullets"
                           :key="id"
                           @click.stop="
-                            link.internal
-                              ? navigateTo(link.url)
-                              : navigateTo(link.url, {
+                            bullet.internal
+                              ? navigateTo(bullet.url)
+                              : navigateTo(bullet.url, {
                                   external: true,
                                 })
                           "
-                          :disabled="isUrlUndefined(link.url)"
+                          @mouseover="$event.preventDefault()"
                           rounded="0"
                           block
                           size="x-large"
-                          class="home-portfolio-nav-button text-body-1 text-lg-h6 d-flex pt-0 pb-2 mb-2"
+                          class="home-portfolio-nav-button text-body-1 d-flex text-lg-h6 pt-2 pb-4 mb-2"
+                          :class="lgAndUp ? '' : 'flex-column'"
                         >
-                          <span>
-                            <v-icon
-                              class="justify-start text-secondary"
-                              size="x-small"
-                              >mdi-link</v-icon
+                          <v-card class="d-flex">
+                            <span>
+                              <v-icon
+                                class="justify-start text-secondary"
+                                size="x-small"
+                                >mdi-eye-outline</v-icon
+                              >
+                            </span>
+                            <h6 class="text-body-1 text-md-h6 px-3 flex-grow-1">
+                              {{ bullet.title }}
+                            </h6>
+                            <!-- <span v-show="!expandPortfolioContentBullets">
+                              <v-icon
+                                class="justify-end text-tertiary"
+                                size="x-small"
+                                >mdi-arrow-bottom-right</v-icon
+                              >
+                            </span> -->
+                          </v-card>
+                          <v-fade-transition>
+                            <v-card
+                              v-show="expandPortfolioContentBullets"
+                              class="pl-9 pt-9 pa-lg-12 bullets"
                             >
-                          </span>
-                          <span class="px-3 flex-grow-1">{{ link.title }}</span>
-                          <span>
-                            <v-icon
-                              class="justify-end text-tertiary"
-                              size="x-small"
-                              >mdi-arrow-top-right</v-icon
-                            >
-                          </span>
+                              <p>
+                                {{ bullet.description }}
+                              </p>
+                            </v-card>
+                          </v-fade-transition>
                         </v-card>
                       </div>
                     </v-col>

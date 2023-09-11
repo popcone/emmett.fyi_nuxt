@@ -126,6 +126,20 @@ a, a:hover, .a:visited {
     #portfolio {
       width: vars.$max-width;
 
+      $content-bullets-width: 68%;
+
+      .content-bullets {
+        .bullets {
+          min-width: $content-bullets-width;
+          width: $content-bullets-width;
+          
+          @media screen and (min-width: vars.$break-lg) {
+            border-left: dotted 1px vars.$color-primary;
+          }
+        }
+      }
+      
+
     }
 
   }
