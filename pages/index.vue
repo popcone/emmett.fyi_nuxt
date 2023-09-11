@@ -15,7 +15,7 @@ const { smAndUp, mdAndDown, mdAndUp, lgAndUp } = useDisplay();
 <template>
   <div id="index">
     <ClientOnly>
-      <v-container id="header" class="mb-12 bg-background" fluid>
+      <v-container id="header" class="bg-background" fluid>
         <!-- Header Title -->
         <v-row v-if="mdAndUp">
           <v-col class="title-container">
