@@ -128,10 +128,13 @@ a, a:hover, .a:visited {
 
       $content-bullets-width: 68%;
 
-      .content-bullets {
-        .bullets {
+      .content-bullets {      
+        .bullet-title {
+          min-width: calc(100% - $content-bullets-width);
+        }
+
+        .bullet-description {
           min-width: $content-bullets-width !important;
-          max-width: $content-bullets-width !important;
           width: $content-bullets-width !important;
           
           @media screen and (min-width: vars.$break-lg) {
@@ -142,8 +145,9 @@ a, a:hover, .a:visited {
       .content-bullets > div:hover {
           background-color: vars.$color-info !important;
           color: rgba($color: #fff, $alpha: 1.0) !important;
+
           
-          .bullets {
+          .bullet-description {
             border-color: #fff;
           }
       }
