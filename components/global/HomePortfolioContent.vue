@@ -34,6 +34,8 @@ const expandPortfolioContentBullets = ref(false);
 <template>
   <v-container class="d-flex justify-center" fluid>
     <v-card v-if="projectUndefined" width="100vw" class="mt-6">
+      <!-- TODO: Move this to a component -->
+      <!-- Introduction Page -->
       <v-row class="px-0">
         <v-col cols="0" md="0" lg="1" xl="2"> </v-col>
         <v-col cols="12" md="6" lg="5" xl="4" class="px-3 px-xl-12 px-xxl-16">
@@ -92,6 +94,7 @@ const expandPortfolioContentBullets = ref(false);
         <v-col cols="0" md="0" lg="1" xl="2"> </v-col>
       </v-row>
     </v-card>
+    <!-- Portfolio Content -->
     <v-card
       id="portfolio"
       class="px-4 px-xl-0 d-flex justify-center mt-12"
@@ -118,9 +121,13 @@ const expandPortfolioContentBullets = ref(false);
               density="dense"
               variant="plain"
               class="pa-0 text-primary text-capitalize text-body-1"
-              >Production</v-btn
+              >View in Production</v-btn
             >
-            <v-divider class="mx-4" vertical></v-divider>
+            <v-divider
+              v-if="!isUrlUndefined(project.links.source)"
+              class="mx-4"
+              vertical
+            ></v-divider>
             <v-btn
               v-if="!isUrlUndefined(project.links.source)"
               :href="project.links.source"
@@ -180,7 +187,7 @@ const expandPortfolioContentBullets = ref(false);
                           :class="lgAndUp ? '' : 'flex-column'"
                         >
                           <v-card
-                            class="d-flex"
+                            class="bullet-title d-flex"
                             :class="
                               expandPortfolioContentBullets
                                 ? 'align-center'
@@ -206,16 +213,14 @@ const expandPortfolioContentBullets = ref(false);
                               >
                             </span> -->
                           </v-card>
-                          <!-- <v-fade-transition> -->
                           <v-card
                             v-show="expandPortfolioContentBullets"
-                            class="pl-9 pt-9 pa-lg-12 bullets"
+                            class="bullet-description pl-9 pt-9 pa-lg-12"
                           >
                             <p>
                               {{ bullet.description }}
                             </p>
                           </v-card>
-                          <!-- </v-fade-transition> -->
                         </v-card>
                       </div>
                     </v-col>
