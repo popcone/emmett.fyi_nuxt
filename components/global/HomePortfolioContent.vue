@@ -47,6 +47,7 @@ const expandPortfolioContentBullets = ref(false);
             >
               <v-img
                 :src="`${imgBase}em.jpg`"
+                :lazy-src="`${imgBase}em.jpg`"
                 alt="Emmett"
                 cover
                 :aspect-ratio="0.7995735608"
@@ -161,33 +162,36 @@ const expandPortfolioContentBullets = ref(false);
                       <div
                         width="100%"
                         class="content-bullets"
-                        @mouseover.capture="
-                          expandPortfolioContentBullets = true
+                        @mouseover.capture.passive="
+                          expandPortfolioContentBullets = true;
+                          $event.preventDefault();
                         "
-                        @mouseout="expandPortfolioContentBullets = false"
+                        @mouseout.passive="
+                          expandPortfolioContentBullets = false
+                        "
                       >
                         <v-card
                           v-for="(bullet, id) in project.bullets"
                           :key="id"
-                          @click.stop="
-                            bullet.internal
-                              ? navigateTo(bullet.url)
-                              : navigateTo(bullet.url, {
-                                  external: true,
-                                })
-                          "
-                          @mouseover="$event.preventDefault()"
                           rounded="0"
                           block
                           size="x-large"
                           class="home-portfolio-nav-button text-body-1 d-flex text-lg-h6 pt-2 pb-4 mb-2"
                           :class="lgAndUp ? '' : 'flex-column'"
                         >
-                          <v-card class="d-flex">
+                          <v-card
+                            class="d-flex"
+                            :class="
+                              expandPortfolioContentBullets
+                                ? 'align-center'
+                                : ''
+                            "
+                          >
                             <span>
                               <v-icon
                                 class="justify-start text-secondary"
                                 size="x-small"
+                                v-show="!expandPortfolioContentBullets"
                                 >mdi-eye-outline</v-icon
                               >
                             </span>
@@ -202,16 +206,16 @@ const expandPortfolioContentBullets = ref(false);
                               >
                             </span> -->
                           </v-card>
-                          <v-fade-transition>
-                            <v-card
-                              v-show="expandPortfolioContentBullets"
-                              class="pl-9 pt-9 pa-lg-12 bullets"
-                            >
-                              <p>
-                                {{ bullet.description }}
-                              </p>
-                            </v-card>
-                          </v-fade-transition>
+                          <!-- <v-fade-transition> -->
+                          <v-card
+                            v-show="expandPortfolioContentBullets"
+                            class="pl-9 pt-9 pa-lg-12 bullets"
+                          >
+                            <p>
+                              {{ bullet.description }}
+                            </p>
+                          </v-card>
+                          <!-- </v-fade-transition> -->
                         </v-card>
                       </div>
                     </v-col>
