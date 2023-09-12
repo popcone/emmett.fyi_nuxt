@@ -130,13 +130,22 @@ a, a:hover, .a:visited {
 
       .content-bullets {
         .bullets {
-          min-width: $content-bullets-width;
-          width: $content-bullets-width;
+          min-width: $content-bullets-width !important;
+          max-width: $content-bullets-width !important;
+          width: $content-bullets-width !important;
           
           @media screen and (min-width: vars.$break-lg) {
             border-left: dotted 1px vars.$color-primary;
           }
         }
+      }
+      .content-bullets > div:hover {
+          background-color: vars.$color-info !important;
+          color: rgba($color: #fff, $alpha: 1.0) !important;
+          
+          .bullets {
+            border-color: #fff;
+          }
       }
       
 

@@ -51,7 +51,7 @@ export default defineNuxtConfig({
                             secondary: '#0099cc',
                             tertiary: '#7ec9b6',
                             error: '#B00020',
-                            info: '#2196F3',
+                            info: '#2d6c5c',
                             success: '#4CAF50',
                             warning: '#FB8C00',
                         }
@@ -64,7 +64,7 @@ export default defineNuxtConfig({
                             secondary: '#8f005d',
                             tertiary: '#7ec9b6',
                             error: '#B00020',
-                            info: '#2196F3',
+                            info: '#3c907b',
                             success: '#4CAF50',
                             warning: '#FB8C00',
                         }
