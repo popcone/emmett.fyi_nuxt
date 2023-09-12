@@ -46,25 +46,25 @@ export default defineNuxtConfig({
                     dark: {
                         colors: {
                             background: '#0d0d0d',
-                            surface: '#fafbfb',
+                            surface: '#eff3f5',
                             primary: '#337cb2',
-                            secondary: '#34bcda',
-                            tertiary: '#f7f8fa',
+                            secondary: '#0099cc',
+                            tertiary: '#7ec9b6',
                             error: '#B00020',
-                            info: '#2196F3',
+                            info: '#2d6c5c',
                             success: '#4CAF50',
                             warning: '#FB8C00',
                         }
                     },
                     light: {
                         colors: {
-                            background: '#f9fbfb',
+                            background: '#eff3f5',
                             surface: '#0d0d0d',
-                            primary: '#337cb2',
-                            secondary: '#34bcda',
-                            tertiary: '#f7f8fa',
+                            primary: '#28608a',
+                            secondary: '#8f005d',
+                            tertiary: '#7ec9b6',
                             error: '#B00020',
-                            info: '#2196F3',
+                            info: '#3c907b',
                             success: '#4CAF50',
                             warning: '#FB8C00',
                         }
@@ -100,7 +100,7 @@ export default defineNuxtConfig({
                     variant: 'flat',
                 },
                 VDivider: {
-                    color: 'primary',
+                    color: 'secondary',
                 },
                 VNavigationDrawer: {
                     color: 'transparent',

@@ -31,7 +31,7 @@ a, a:hover, .a:visited {
     font-weight: 400;
     line-height: .955;
     color: vars.$color-primary;
-    opacity: .33;
+    opacity: .18;
     
     @media screen and (min-width: vars.$break-xxl) {
         font-size: vars.$font-size-h1 * 2.441;
@@ -68,7 +68,7 @@ a, a:hover, .a:visited {
   }
 
   h1.title:nth-of-type(odd){
-    opacity: .11;
+    opacity: .05;
   }
   
   h1.title span.word {
@@ -96,17 +96,19 @@ a, a:hover, .a:visited {
   #header {
 
     overflow: hidden;
+    position: relative;
+    z-index: 7;
     
     .title-container {
-
+      
       display: flex;
       flex-direction: row;
       align-items: flex-end;
       justify-content: center;
-
-      $title-container-height: 20vh;
+      
+      $title-container-height: 15vh;
       height: $title-container-height;
-
+      
       @media screen and (max-width: vars.$break-lg) {
         height: $title-container-height * .85;
       }
@@ -119,10 +121,38 @@ a, a:hover, .a:visited {
 
   }
 
-  #content {
+  #main {
 
     #portfolio {
-      max-width: 120ch;
+      width: vars.$max-width;
+
+      $content-bullets-width: 68%;
+
+      .content-bullets {      
+        .bullet-title {
+          min-width: calc(100% - $content-bullets-width);
+        }
+
+        .bullet-description {
+          min-width: $content-bullets-width !important;
+          width: $content-bullets-width !important;
+          
+          @media screen and (min-width: vars.$break-lg) {
+            border-left: dotted 1px vars.$color-primary;
+          }
+        }
+      }
+      .content-bullets > div:hover {
+          background-color: vars.$color-info !important;
+          color: rgba($color: #fff, $alpha: 1.0) !important;
+
+          
+          .bullet-description {
+            border-color: #fff;
+          }
+      }
+      
+
     }
 
   }
@@ -134,8 +164,9 @@ a, a:hover, .a:visited {
   h1.logo {
 
     font-family: 'Shrikhand', cursive !important;
-    font-size: vars.$font-size-h4;
+    font-size: vars.$font-size-h4 * .85;
     color: vars.$color-primary;
+    opacity: .77;
 
       @media screen and (max-width: vars.$break-lg) {
           font-size: vars.$font-size-h5;

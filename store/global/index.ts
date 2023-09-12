@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useIndexStore = defineStore('index', {
   
   state: (): Index => ({
-      title: ["Dream", "Conceive", "Zone", "Achieve"],
+      title: "Dream. Conceive. Zone. Achieve",
   }),
 
   actions: {
@@ -12,6 +12,6 @@ export const useIndexStore = defineStore('index', {
 })
 
 interface Index {
-  title: string[]
+  title: string
 }
   

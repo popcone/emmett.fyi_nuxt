@@ -36,9 +36,14 @@ const { xxl } = useDisplay();
 </script>
 
 <template>
-  <v-layout id="layout" class="bg-background">
+  <v-layout id="layout">
     <ClientOnly>
-      <v-app-bar id="appbar" class="px-4" density="comfortable">
+      <v-app-bar
+        id="appbar"
+        class="px-4"
+        density="comfortable"
+        color="background"
+      >
         <v-row>
           <v-col v-show="xxl" cols="1"></v-col>
           <!-- LOGO -->
