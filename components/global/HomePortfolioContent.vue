@@ -2,13 +2,13 @@
 import { storeToRefs } from "pinia";
 import { useDisplay } from "vuetify";
 import { useGlobalStore } from "~/store/global/global";
-import { useHomeNavStore } from "~/store/global/homeNav";
+import { usePortfolioContentStore } from "~/store/global/homePortfolioContent";
 import { useIsUrlUndefined as isUrlUndefined } from "~/composables/useIsUrlUndefined";
 
 // State Management
-const HomeNavStore = useHomeNavStore();
-const { currentProject } = storeToRefs(HomeNavStore);
-const { projects, intro } = HomeNavStore;
+const PortfolioContent = usePortfolioContentStore();
+const { currentProject } = storeToRefs(PortfolioContent);
+const { projects, intro } = PortfolioContent;
 
 const { imgBase } = useGlobalStore();
 
@@ -18,8 +18,8 @@ const projectUndefined = computed(
 );
 
 // Watch for updates to currentProject
-HomeNavStore.$subscribe(async (mutation, state) => {
-  currentProject.value = await HomeNavStore.currentProject;
+PortfolioContent.$subscribe(async (mutation, state) => {
+  currentProject.value = await PortfolioContent.currentProject;
   await setTimeout(() => {
     project.value = projects[currentProject.value];
   }, 150);
@@ -111,7 +111,7 @@ const expandPortfolioContentBullets = ref(false);
         >
           <div class="flex-grow-1">
             <h4 class="portfolio-title text-h5 text-lg-h4 font-weight-medium">
-              {{ project.title }}
+              {{ project.title.long }}
             </h4>
           </div>
           <div class="d-flex">
@@ -165,7 +165,7 @@ const expandPortfolioContentBullets = ref(false);
                   <v-row>
                     <!-- Behind the Work -->
                     <v-col cols="12">
-                      <h5 class="text-primary mb-3">Behind the Work</h5>
+                      <h5 class="text-primary mb-3">Unwrap the Process</h5>
                       <div
                         width="100%"
                         class="content-bullets"
@@ -241,4 +241,4 @@ const expandPortfolioContentBullets = ref(false);
 Styles are defined within pages/index.vue 
 or assets/xss/default.scs
 */
-</style>
+</style>~/store/global/homePortfolioContent

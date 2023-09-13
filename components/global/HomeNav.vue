@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { storeToRefs } from "pinia";
-import { useHomeNavStore } from "~/store/global/homeNav";
+import { usePortfolioContentStore } from "~/store/global/homePortfolioContent";
 
 // STATE MANAGEMENT
-const store = useHomeNavStore();
-const { projects } = store;
-const { currentProject, showPortfolio } = storeToRefs(store);
+const PortfolioContent = usePortfolioContentStore();
+const { projects } = PortfolioContent;
+const { currentProject, showPortfolio } = storeToRefs(PortfolioContent);
 </script>
 
 <template>
@@ -32,7 +32,9 @@ const { currentProject, showPortfolio } = storeToRefs(store);
                   showPortfolio === false ? true : false;
                 "
               >
-                <p class="text-body-2 text-body-lg-1">{{ project.title }}</p>
+                <p class="text-body-2 text-body-lg-1">
+                  {{ project.title.short }}
+                </p>
               </v-card>
             </v-slide-group-item>
           </v-slide-group>
@@ -48,4 +50,4 @@ const { currentProject, showPortfolio } = storeToRefs(store);
 Styles ared defined within pages/index.vue  
 or assets/xss/default.scs
 */
-</style>
+</style>~/store/global/homePortfolioContent
