@@ -1,5 +1,7 @@
 <script lang="ts" setup>
+// Imports
 import { storeToRefs } from "pinia";
+import { ref, computed } from "vue";
 import { useDisplay } from "vuetify";
 import { useGlobalStore } from "~/store/global/global";
 import { usePortfolioContentStore } from "~/store/global/homePortfolioContent";
@@ -13,6 +15,7 @@ const { projects, intro } = PortfolioContent;
 // Local State
 const expandPortfolioContentBullets = ref(false);
 
+// Main image
 const { imgBase } = useGlobalStore();
 
 let project = computed(() => projects[currentProject.value]);
