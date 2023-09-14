@@ -197,3 +197,13 @@ a, a:hover, .a:visited {
   }
 
 }
+
+#error-page {
+  @extend #index;
+
+  h1.title {
+    @media screen and (max-width: vars.$break-xxl) {
+        font-size: vars.$font-size-h1 * 1.899;
+    }
+  }
+}
