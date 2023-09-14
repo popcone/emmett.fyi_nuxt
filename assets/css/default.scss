@@ -142,6 +142,7 @@ a, a:hover, .a:visited {
           }
         }
       }
+
       .content-bullets > div:hover {
           background-color: vars.$color-info !important;
           color: rgba($color: #fff, $alpha: 1.0) !important;
@@ -150,6 +151,23 @@ a, a:hover, .a:visited {
           .bullet-description {
             border-color: #fff;
           }
+      }
+
+      .home-portfolio-view-work-button {
+        border-left: solid 3px vars.$color-secondary;
+      }
+
+      .home-portfolio-view-work-button::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: vars.$color-tertiary;
+        opacity: 0.1;
       }
       
 

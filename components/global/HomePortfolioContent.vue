@@ -5,10 +5,13 @@ import { useGlobalStore } from "~/store/global/global";
 import { usePortfolioContentStore } from "~/store/global/homePortfolioContent";
 import { useIsUrlUndefined as isUrlUndefined } from "~/composables/useIsUrlUndefined";
 
-// State Management
+// Global State
 const PortfolioContent = usePortfolioContentStore();
 const { currentProject } = storeToRefs(PortfolioContent);
 const { projects, intro } = PortfolioContent;
+
+// Local State
+const expandPortfolioContentBullets = ref(false);
 
 const { imgBase } = useGlobalStore();
 
@@ -16,6 +19,10 @@ let project = computed(() => projects[currentProject.value]);
 const projectUndefined = computed(
   () => project.value === null || project.value === undefined
 );
+
+const isExternalLink = (target: string) => {
+  return target === "external";
+};
 
 // Watch for updates to currentProject
 PortfolioContent.$subscribe(async (mutation, state) => {
@@ -26,9 +33,7 @@ PortfolioContent.$subscribe(async (mutation, state) => {
 });
 
 // Display
-const { mdAndDown, mdAndUp, lgAndUp } = useDisplay();
-
-const expandPortfolioContentBullets = ref(false);
+const { smAndDown, mdAndDown, mdAndUp, lgAndUp } = useDisplay();
 </script>
 
 <template>
@@ -114,37 +119,6 @@ const expandPortfolioContentBullets = ref(false);
               {{ project.title.long }}
             </h4>
           </div>
-          <div class="d-flex">
-            <v-btn
-              :href="project.links.production"
-              size="x-small"
-              density="dense"
-              variant="plain"
-              class="pa-0 text-primary text-capitalize text-body-1"
-              >View in Production</v-btn
-            >
-            <v-divider
-              v-if="!isUrlUndefined(project.links.source)"
-              class="mx-4"
-              vertical
-            ></v-divider>
-            <v-btn
-              v-if="!isUrlUndefined(project.links.source)"
-              :href="project.links.source"
-              class="pa-0 text-primary text-capitalize text-body-1"
-              density="dense"
-              variant="plain"
-              target="_blank"
-              size="x-small"
-            >
-              <span>Source Code</span>
-              <span>
-                <v-icon class="justify-end text-tertiary ml-2" size="small"
-                  >mdi-arrow-top-right</v-icon
-                >
-              </span>
-            </v-btn>
-          </div>
         </v-col>
         <v-col cols="12" class="pa-0">
           <v-divider class="mb-3 mb-md-6 md-lg-9"></v-divider>
@@ -155,6 +129,7 @@ const expandPortfolioContentBullets = ref(false);
             <v-row>
               <v-col cols="12">
                 <v-card class="project-decription">
+                  <!-- Project description -->
                   <v-row class="mb-3 mb-md-6">
                     <v-col cols="12">
                       <h4 class="text-body-1 text-md-h5 text-xl-h4">
@@ -162,16 +137,73 @@ const expandPortfolioContentBullets = ref(false);
                       </h4>
                     </v-col>
                   </v-row>
-                  <v-row>
-                    <!-- Behind the Work -->
+                  <!-- View the Work -->
+                  <v-row class="mb-3 mb-md-6">
                     <v-col cols="12">
-                      <h5 class="text-primary mb-3">Unwrap the Process</h5>
+                      <h5 class="text-primary text-h6 text-md-h5">
+                        View the Work
+                      </h5>
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      class="d-flex"
+                      :class="smAndDown ? 'flex-column' : ''"
+                    >
+                      <v-card v-for="(link, id) in project.links" :key="id">
+                        <v-card
+                          :disabled="isUrlUndefined(link.path)"
+                          @click.stop="
+                            navigateTo(
+                              `${link.path}`,
+                              isExternalLink(link.target)
+                                ? {
+                                    external: true,
+                                    open: {
+                                      target: '_blank',
+                                    },
+                                  }
+                                : undefined
+                            )
+                          "
+                          class="home-portfolio-view-work-button pt-1 pb-3 pl-3 pr-12 mr-0 mr-md-9 mr-lg-9 mb-3"
+                        >
+                          <div>
+                            <h6 class="text-body-1 text-md-h6">
+                              {{ link.title }}
+                            </h6>
+                          </div>
+                          <div>
+                            <span class="mr-3 text-body-2">{{
+                              isUrlUndefined(link.path)
+                                ? "...currently down"
+                                : `Visit page`
+                            }}</span>
+                            <span>
+                              <v-icon
+                                v-if="!isUrlUndefined(link.path)"
+                                class="justify-end text-tertiary"
+                                size="x-small"
+                                >mdi-arrow-top-right</v-icon
+                              >
+                            </span>
+                          </div>
+                        </v-card>
+                      </v-card>
+                    </v-col>
+                  </v-row>
+                  <!-- Behind the Work -->
+                  <v-row>
+                    <v-col cols="12">
+                      <h5 class="text-primary text-h6 text-md-h5">
+                        Unwrap the Work
+                      </h5>
+                    </v-col>
+                    <v-col cols="12">
                       <div
                         width="100%"
                         class="content-bullets"
                         @mouseover.capture.passive="
-                          expandPortfolioContentBullets = true;
-                          $event.preventDefault();
+                          expandPortfolioContentBullets = true
                         "
                         @mouseout.passive="
                           expandPortfolioContentBullets = false
@@ -205,17 +237,10 @@ const expandPortfolioContentBullets = ref(false);
                             <h6 class="text-body-1 text-md-h6 px-3 flex-grow-1">
                               {{ bullet.title }}
                             </h6>
-                            <!-- <span v-show="!expandPortfolioContentBullets">
-                              <v-icon
-                                class="justify-end text-tertiary"
-                                size="x-small"
-                                >mdi-arrow-bottom-right</v-icon
-                              >
-                            </span> -->
                           </v-card>
                           <v-card
                             v-show="expandPortfolioContentBullets"
-                            class="bullet-description pl-9 pt-9 pa-lg-12"
+                            class="bullet-description pl-6 pl-md-9 pr-0 pt-6 pa-lg-12"
                           >
                             <p>
                               {{ bullet.description }}
@@ -239,6 +264,6 @@ const expandPortfolioContentBullets = ref(false);
 <style scoped lang="scss">
 /* 
 Styles are defined within pages/index.vue 
-or assets/xss/default.scs
+or assets/css/default.scs
 */
-</style>~/store/global/homePortfolioContent
+</style>
