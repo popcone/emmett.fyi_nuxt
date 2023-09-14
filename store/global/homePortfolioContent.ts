@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 
-export const useHomeNavStore = defineStore('homeNav', {
+export const usePortfolioContentStore = defineStore('portfolioContent', {
   
-  state: (): HomeNav => ({
+  state: (): PortfolioContent => ({
       
     currentProject: null,
     showPortfolio: false,
@@ -11,14 +11,20 @@ export const useHomeNavStore = defineStore('homeNav', {
     ///////
     projects: [
       {
-        id: 3,
-        title: 'Product Data Sheets',
+        id: 1,
         tag: '',
-        description: 'API-driven, Single Page Application, providing partners with public access to member pricing, discounts, and bonuses in an easy-to-read table format.',
-        links: {
-          source: '',
-          production: 'https://tbbcoachtools.com/product-directory/us/all',
+        title: {
+          short: 'Product Data Sheets',
+          long: 'Product Data Sheets',
         },
+        description: 'API-driven, Single Page Application, providing partners with public access to member pricing, discounts, and bonuses in an easy-to-read table format.',
+        links: [
+          {
+            title: 'Live Version',
+            path: 'https://tbbcoachtools.com/product-directory/us/all',
+            target: 'external',
+          },
+        ],
         bullets: [
             {
               title: 'Project Role: Lead Developer',
@@ -47,17 +53,33 @@ export const useHomeNavStore = defineStore('homeNav', {
           ],
       },
       {
-        id: 1,
-        title: 'Team Beachbody',
+        id: 2,
         tag: '',
-        description: 'Enhancing the experience of an enterprise-sized legacy application, improving the performance of existing features and contributing to new features.',
-        links: {
-          source: '',
-          production: 'https://www.teambeachbody.com/shop/us',
+        title: {
+          short: 'Beachbody',
+          long: 'Beachbody.com and child entities',
         },
+        description: 'Enhancing the experience of an enterprise-sized legacy application, improving the performance of existing features and contributing to new features.',
+        links: [
+          {
+            title: 'Legacy Sections',
+            path: 'https://www.teambeachbody.com/shop/us',
+            target: 'external',
+          },
+          {
+            title: 'BOD groups section',
+            path: 'https://www.beachbodyondemand.com/groups-about?locale=en_US&programId=BeachbodyOnDemand',
+            target: 'external',
+          },
+          {
+            title: 'Coach Office Section',
+            path: 'https://coach.teambeachbody.com',
+            target: 'external',
+          },
+        ],
         bullets: [
           {
-            title: 'Role: Front End Developer',
+            title: 'Project Role: Front End Developer',
             description: 'I leveraged vanilla JS, CSS, and HTML expertise, along with my proficiency in Virtual DOM and component driven development, to transition between codebases to contribute to both frontend development in React and CMS development in WordPress.'
           },
           {
@@ -75,21 +97,37 @@ export const useHomeNavStore = defineStore('homeNav', {
         ],
       },
       {
-        id: 1,
-        title: 'Assessments',
+        id: 3,
         tag: '',
-        description: 'Brand-specific assessments, developed to assist users in making informed decisions about their nutrition plans. Refactored and remixed for my portfolio.',
-        links: {
-          source: 'https://github.com/popcone/emmett.fyi_nuxt/tree/main/pages/portfolio/quiz',
-          production: '/portfolio/quiz/xbss?locale=en_us',
+        title: {
+          short: 'Assessment Pages',
+          long: 'Assessments',
         },
+        description: 'Brand-specific assessments, developed to assist users in making informed decisions about their nutrition plans. Refactored for my portfolio.',
+        links: [
+          {
+            title: 'Cloned Version',
+            path: '/portfolio/quiz/xbss?locale=en_us',
+            target: 'internal',
+          },
+          {
+            title: 'Source (Refactored) ',
+            path: 'https://github.com/popcone/emmett.fyi_nuxt/tree/main/pages/portfolio/quiz',
+            target: 'external',
+          },
+          {
+            title: 'Live Version #1',
+            path: 'https://teambeachbody.com/micro-site/645/index.html#/en',
+            target: 'external',
+          },
+        ],
         bullets: [
           {
-            title: "Role: Lead Developer & UI Designer",
+            title: "Project Role: Lead Developer & UI Designer",
             description: "My responsibilities involved crafting the user interface, design system, data structure and the overall functional backbone for over 12 assessments."
           },
           {
-            title: 'Problem #1: Brand managers require, customizable, yet easy to replicate assessments for benchmarking',
+            title: 'Challenge #1: Brand managers require, customizable, yet easy to replicate assessments for benchmarking',
             description: 'Create brand-specific assessments with comparable functionality for benchmarking. Ensure easy, consistent replication for speed of launch.'
           },
           {
@@ -97,7 +135,7 @@ export const useHomeNavStore = defineStore('homeNav', {
             description: 'I delivered a simple visual design system and established a structured data framework for guiding the submission of new assessments. This not only ensured a uniform user experience across different brands and a foundation for future development.'
           },
           {
-            title: 'Problem #2: Simplify the grading system',
+            title: 'Challenge #2: Simplify the grading system',
             description: 'Each assessment had a unique set of questions, with a unique grading formula. The grading formula was based on a series of calculations, which needed to be transformed into an intuitive, user-friendly assessment tool.'
           },
           {
@@ -107,22 +145,27 @@ export const useHomeNavStore = defineStore('homeNav', {
         ],
       },
       {
-        id: 2,
-        title: 'Product Guides',
+        id: 4,
         tag: '',
-        description: 'CMS managed guides',
-        links: {
-          source: '',
-          production: '',
-          
+        title: {
+          short: 'Product Guides',
+          long: 'Product Guides',
         },
+        description: 'CMS-managed assets, we providing support to accountability groups, helping them enhance their results in their fitness and nutrition programs. Refactored for my portfolio.',
+        links: [
+          {
+            title: 'Live Version',
+            path: '',
+            target: 'internal',
+          }
+        ],
         bullets: [
           {
-            title: 'Role #1: Lead Developer',
+            title: 'Project Role: Lead Developer',
             description: 'I served as the Lead Developer, handling development, participating in research and design discussions, conducting testing, assisting in requirement gathering, and presenting review environments.'
           },
           {
-            title: 'Problem #1: Partners were dissatisfied with lack of a search feature and navigation',
+            title: 'Challenge #1: Partners were dissatisfied with lack of a search feature and navigation',
             description: 'Partners were experiencing issues navigating the current & newly launched product information guides. Their key areas of concern were the lack of a search feature and the inability to easily navigate between guides. This impacted their engagement, which in turn impacted education opportunities when recommending fitness pacakages.'
           },
           {
@@ -130,45 +173,15 @@ export const useHomeNavStore = defineStore('homeNav', {
             description: 'Working closely with brand managers and a dedicated UI/UX designer, I contributed to research and design iterations tailored to offer partners an experience similar to that of an eCommerce platform. This involved integrating critical elements like a search feature, a left panel filter/navigation menu, and a product grid presentation.'
           },
           {
-            title: 'Problem #2: Legacy Wordpress frustrated Brand managers',
-            description: 'Brand managers felt restrained by the WordPress CMS. The instance would break so often, it created a sense of frustration and a strain on their workload, resulting in slower content updates.'
+            title: 'Challenge #2: Legacy CMS system frustrated Brand managers',
+            description: 'Brand managers felt restrained by the Legacy CMS system. The instance would break often, creating a sense of frustration and a strain on their workload, resulting in slower content updates.'
           },
           {
             title: 'Solution #3: Update Legacy code or develop a new, more user-friendly solution',
-            description: 'I opted for a headless solution, seamlessly integrating it into the backend alongside other products. This involved setting up and customizing a Directus CMS instance, implementing Nuxt for the frontend, and collaborating with backend engineers to integrate MySQL database and facilitate deployment.'
+            description: 'I opted for a headless solution, seamlessly integrating it into the backend alongside other products. This involved setting up and customizing a headless CMS instance, implementing a dedicated frontend stack, and collaborating with backend engineers to integrate a MySQL database instance.'
           },
         ],
       },
-      
-      
-      // {
-      //   id: 3,
-      //   title: 'More Projects',
-      //   tag: '',
-      //   description: '',
-      //   links: {
-      //     source: '',
-      //     production: 'http://daprogers.com',
-      //   },
-      //   bullets: [
-      //       {
-      //         title: 'Project Role: Lead Developer',
-      //         description: ''
-      //       },
-      //       {
-      //         title: 'Problem: ',
-      //         description: ''
-      //       },
-      //       {
-      //         title: 'Challenge #1: ',
-      //         description: ''
-      //       },
-      //       {
-      //         title: 'Solution #1: ',
-      //         description: ''
-      //       },
-      //     ],
-      // },
     ],
       
   }),
@@ -183,18 +196,35 @@ export const useHomeNavStore = defineStore('homeNav', {
   
 })
 
-interface HomeNav {
+interface PortfolioContent {
   currentProject: number | null,
   intro: string,
-  projects: Project[] | null,
+  projects: Projects[] | null,
   showPortfolio: boolean,
 }
 
-interface Project {
+interface Projects {
   id: number,
-  title: string,
-  tag: string,
+  title: { short: string, long: string },
+  tag?: string,
   description: string,
-  links: { [key: string]: string }
-  bullets: Array<{ [key: string]: string }>,
+  links?: Array<Links>
+  bullets: Array<Bullets>,
 }
+
+interface Links {
+  title: string,
+  path: string | Route,
+  target: 'internal' | 'external' | '' | null | undefined,
+}
+
+interface Bullets {
+  title: string,
+  description: string,
+}
+
+interface Route {
+  name: string,
+  params: { id: number },
+}
+

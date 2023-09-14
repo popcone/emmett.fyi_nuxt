@@ -1,51 +1,55 @@
 <script lang="ts" setup>
 import { storeToRefs } from "pinia";
-import { useHomeNavStore } from "~/store/global/homeNav";
+import { usePortfolioContentStore } from "~/store/global/homePortfolioContent";
 
 // STATE MANAGEMENT
-const store = useHomeNavStore();
-const { projects } = store;
-const { currentProject, showPortfolio } = storeToRefs(store);
+const PortfolioContent = usePortfolioContentStore();
+const { projects } = PortfolioContent;
+const { currentProject, showPortfolio } = storeToRefs(PortfolioContent);
+
+const togglePortfolio = () => {
+  showPortfolio.value = !showPortfolio.value;
+};
 </script>
 
 <template>
-  <div>
-    <v-container fluid>
-      <v-row>
-        <v-col cols="12" class="pa-0 d-flex justify-center">
-          <v-slide-group
-            v-model="currentProject"
-            selected-class="home-nav-button-selected"
-            center-active="true"
-            mandatory="true"
+  <v-container fluid>
+    <v-row>
+      <v-col cols="12" class="pa-0 d-flex justify-center">
+        <v-slide-group
+          v-model="currentProject"
+          selected-class="home-nav-button-selected"
+          center-active="true"
+          mandatory="true"
+        >
+          <v-slide-group-item
+            v-for="(project, index) of projects"
+            :key="index"
+            v-slot="{ toggle, selectedClass }"
           >
-            <v-slide-group-item
-              v-for="(project, index) of projects"
-              :key="index"
-              v-slot="{ toggle, selectedClass }"
+            <v-card
+              class="home-nav-button pt-0 pb-3 px-3 mr-4 mr-md-6 text-body-2 text-md-body-1"
+              :class="[selectedClass]"
+              @click="
+                toggle();
+                togglePortfolio();
+              "
             >
-              <v-card
-                class="home-nav-button pt-0 pb-3 px-3 mr-4 mr-md-6 text-body-2 text-md-body-1"
-                :class="[selectedClass]"
-                @click="
-                  toggle();
-                  showPortfolio === false ? true : false;
-                "
-              >
-                <p class="text-body-2 text-body-lg-1">{{ project.title }}</p>
-              </v-card>
-            </v-slide-group-item>
-          </v-slide-group>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+              <p class="text-body-2 text-body-lg-1">
+                {{ project.title.short }}
+              </p>
+            </v-card>
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 
 <style scoped lang="scss">
 /* 
 Styles ared defined within pages/index.vue  
-or assets/xss/default.scs
+or assets/css/default.scs
 */
 </style>
