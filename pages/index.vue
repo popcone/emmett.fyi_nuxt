@@ -1,15 +1,31 @@
 <script lang="ts" setup>
+// Imports
+import { provide } from "vue";
 import { useDisplay } from "vuetify";
 import { useIndexStore } from "~/store/global/index";
+import { indexInjectionKey } from "~/composables/utils/indexInjectionKey";
 
-// State Management
+// Project Data
+const {
+  data: portfolioData,
+  pending,
+  error,
+  refresh,
+} = await useFetch("/api/portfolio/");
+const projects = await portfolioData.value["projects"];
+
+provide(indexInjectionKey, {
+  projects,
+});
+
+// Global State
 const indexStore = useIndexStore();
 const title = indexStore.title.replaceAll(". ", " ").split(" ");
 
-const show = ref(false);
-
+//// Styles, Classes, Display
 // Display
 const { smAndUp, mdAndDown, mdAndUp, lgAndUp } = useDisplay();
+//
 </script>
 
 <template>
@@ -27,6 +43,7 @@ const { smAndUp, mdAndDown, mdAndUp, lgAndUp } = useDisplay();
       </v-row>
       <!--  -->
       <v-divider class="mt-6 mb-5"></v-divider>
+      <!-- TODO: Create a <Portfolio /> component and nest Portfolio Nav and Portfolio Wrapper -->
       <!-- Portfolio Nav -->
       <v-row>
         <v-col cols="12">
