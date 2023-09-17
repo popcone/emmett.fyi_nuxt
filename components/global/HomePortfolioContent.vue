@@ -1,27 +1,31 @@
 <script lang="ts" setup>
 // Imports
 import { storeToRefs } from "pinia";
-import { ref, computed } from "vue";
+import { ref, computed, inject } from "vue";
 import { useDisplay } from "vuetify";
 import { useGlobalStore } from "~/store/global/global";
-import { usePortfolioContentStore } from "~/store/global/homePortfolioContent";
+import { useIndexStore } from "~/store/global/index";
 import { useIsUrlUndefined as isUrlUndefined } from "~/composables/useIsUrlUndefined";
+import { indexInjectionKey } from "~/composables/utils/indexInjectionKey";
+
+// Projects Data
+const { projects } = inject(indexInjectionKey);
+let project = computed(() => projects[currentProject.value]);
+
+const projectUndefined = computed(
+  () => project.value === null || project.value === undefined
+);
 
 // Global State
-const PortfolioContent = usePortfolioContentStore();
+const PortfolioContent = useIndexStore();
 const { currentProject } = storeToRefs(PortfolioContent);
-const { projects, intro } = PortfolioContent;
+const { intro } = PortfolioContent;
 
 // Local State
 const expandPortfolioContentBullets = ref(false);
 
 // Main image
 const { imgBase } = useGlobalStore();
-
-let project = computed(() => projects[currentProject.value]);
-const projectUndefined = computed(
-  () => project.value === null || project.value === undefined
-);
 
 const isExternalLink = (target: string) => {
   return target === "external";
@@ -35,6 +39,7 @@ PortfolioContent.$subscribe(async (mutation, state) => {
   }, 150);
 });
 
+//// Styles, Classes, Display
 // Display
 const { smAndDown, mdAndDown, mdAndUp, lgAndUp } = useDisplay();
 </script>

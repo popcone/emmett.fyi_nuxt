@@ -1,15 +1,14 @@
 <script lang="ts" setup>
 import { storeToRefs } from "pinia";
-import { usePortfolioContentStore } from "~/store/global/homePortfolioContent";
+import { useIndexStore } from "~/store/global/index";
+import { indexInjectionKey } from "~/composables/utils/indexInjectionKey";
+
+// Projects Data
+const { projects } = inject(indexInjectionKey);
 
 // STATE MANAGEMENT
-const PortfolioContent = usePortfolioContentStore();
-const { projects } = PortfolioContent;
-const { currentProject, showPortfolio } = storeToRefs(PortfolioContent);
-
-const togglePortfolio = () => {
-  showPortfolio.value = !showPortfolio.value;
-};
+const PortfolioContent = useIndexStore();
+const { currentProject } = storeToRefs(PortfolioContent);
 </script>
 
 <template>
